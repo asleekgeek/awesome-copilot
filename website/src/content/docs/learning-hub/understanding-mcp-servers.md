@@ -3,7 +3,7 @@ title: 'Understanding MCP Servers'
 description: 'Learn how Model Context Protocol servers extend GitHub Copilot with access to external tools, databases, and APIs.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-07-13
+lastUpdated: 2026-08-30
 estimatedReadingTime: '8 minutes'
 tags:
   - mcp
@@ -36,6 +36,7 @@ GitHub Copilot  ←→  MCP Server  ←→  External System
 - Servers run locally on your machine or in a container
 - Each server exposes one or more tools with defined inputs and outputs
 - Agents and users can invoke MCP tools naturally during conversation
+- *(v1.0.81+)* GitHub Copilot CLI, SDK, IDE, and in-memory clients now support the **MCP 2026-07-28** protocol revision, bringing spec-compliant improvements to tool and resource handling
 
 ### Built-in vs MCP Tools
 

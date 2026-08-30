@@ -3,7 +3,7 @@ title: 'Installing and Using Plugins'
 description: 'Learn how to find, install, and manage plugins that extend GitHub Copilot CLI with reusable agents, skills, hooks, and integrations.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-08-19
+lastUpdated: 2026-08-30
 relatedArticles:
   - ./building-custom-agents.md
   - ./creating-effective-skills.md
@@ -237,15 +237,23 @@ copilot plugin uninstall my-plugin
 
 > **Auto-update for first-party plugins** *(v1.0.78+)*: Plugins sourced from the official `copilot-plugins` marketplace automatically update to their latest version at the start of each session. You do not need to run `copilot plugin update` for first-party plugins — updates are applied silently on startup. Community plugins from `awesome-copilot` and other marketplace registries still require a manual `copilot plugin update` command.
 
-### Enabling and Disabling Plugin Components
+> **Plugin update notifications** *(v1.0.81+)*: The `/plugin` dashboard now flags any installed plugins that have a newer version available upstream, and shows an **Update** action inline so you can pull the latest version without leaving the session.
 
-*(v1.0.76+)* The `/plugins` command (or `copilot plugin list` in non-interactive mode) now includes **enable/disable toggles** for individual plugin components. You can turn off specific agents, instructions, hooks, LSP servers, or entire plugins without uninstalling them:
+### The Plugins Dashboard
+
+*(v1.0.81+)* The **Plugins Dashboard** is available to all users. Open it with any of these commands:
 
 ```
-/plugins
+/plugin      # or /mcp  or  /skills
 ```
 
-This opens an interactive list where each installed plugin and its components are shown with a toggle. Disabling a component hides it from Copilot without removing it from disk — useful for temporarily deactivating a hook that is too noisy, or turning off a plugin's instructions when working on a different type of project. Re-enable the component at any time from the same `/plugins` menu.
+The dashboard is a unified view where you can browse installed plugins, manage MCP servers, browse skills, and manage agents and instructions — all in one place. It replaces the older `/plugins` command, which has been removed.
+
+From the dashboard you can also:
+- **Enable/disable** individual agents, instructions, hooks, LSP servers, or entire plugins without uninstalling them. Disabling a component hides it from Copilot without removing it from disk.
+- **View per-resource screens** via `/subagents` and `/instructions` for focused management of agents and instructions specifically.
+
+> **Opt out** *(pre-v1.0.81 only)*: In earlier releases, set `PLUGINS_DASHBOARD=false` to opt out of the dashboard and revert to the legacy skills picker. This option has been removed as of v1.0.81.
 
 ### Loading Plugins from a Local Directory
 

@@ -3,7 +3,7 @@ title: 'Automating with Hooks'
 description: 'Learn how to use hooks to automate lifecycle events like formatting, linting, and governance checks during Copilot agent sessions.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-07-13
+lastUpdated: 2026-08-30
 estimatedReadingTime: '8 minutes'
 tags:
   - hooks
@@ -31,6 +31,7 @@ Hooks are shell commands or scripts that run automatically in response to lifecy
 - They're defined in JSON files stored at `.github/hooks/*.json` in your repository
 - They receive detailed context via JSON input, enabling context-aware automation
 - They can include bundled scripts for complex logic
+- *(v1.0.81+)* Hooks receive the current **OpenTelemetry trace context** (`traceparent` and optionally `tracestate`) via JSON input, so hook scripts can emit correlated spans and integrate into your observability pipeline. Command hooks additionally receive these as environment variables.
 
 ### When to Use Hooks vs Other Customizations
 
