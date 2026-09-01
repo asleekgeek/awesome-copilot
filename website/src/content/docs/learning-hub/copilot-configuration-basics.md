@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-08-19
+lastUpdated: 2026-09-01
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -429,6 +429,8 @@ CLI settings use **camelCase** naming. Key settings added in recent releases:
 | `proxy` | HTTP(S) proxy URL for all outbound CLI requests (e.g., `http://proxy.example.com:8080`) (v1.0.64+) |
 | `sessionLimits` | Restrict credit or turn usage for a session; limits apply across the current conversation and reset on `/clear` (v1.0.66+) |
 | `stayInAutopilot` | Keep the CLI in autopilot mode after an autopilot task completes, instead of returning to interactive mode (v1.0.69+) |
+| `defaultMode` | Default agent mode for new interactive sessions: `agent`, `plan`, or `ask` (v1.0.81+) |
+| `defaultPermissionMode` | Default permission approval behavior for new sessions: `default`, `auto-approve`, or `bypass` (v1.0.81+) |
 
 > **Note**: Older snake_case names (e.g., `include_gitignored`, `auto_updates_channel`) are still accepted for backward compatibility, but camelCase is now the preferred format.
 
@@ -450,6 +452,8 @@ The model picker opens in a **full-screen view** with inline reasoning effort ad
 **Session-scoped model selection** *(v1.0.79+)*: `/model` now changes the model for the **current session only** by default. Use `/config model` to set the default model for future sessions — previously `/model` changed both at once, which made it easy to accidentally change your global default while just trying something out in one session.
 
 **Auto mode and server-side model routing** (v1.0.43+): When you select **Auto** as your model, the CLI uses server-side model routing for real-time model selection. Instead of locking in a single model at session start, Auto mode evaluates each request and routes it to the most appropriate model dynamically. This means straightforward questions can be handled by a faster model while complex reasoning tasks are automatically escalated — without you needing to switch models manually.
+
+*(v1.0.81+)* **Auto mode now adapts model selection as your task evolves** within a conversation. Rather than choosing a model once at the start of a session, Auto mode re-evaluates each turn's needs and can shift to a different model mid-conversation as the nature of your task changes — for example, switching from a planning model to a heavier reasoning model when implementation begins.
 
 **Model family aliases** (v1.0.64+): Instead of typing a full model name, you can use short family aliases in the model setting: `opus`, `sonnet`, `haiku` (Anthropic), and `gpt`, `gemini` (Google/OpenAI). The CLI resolves the alias to the latest available model in that family. This is especially useful in scripts or configuration files where you want to track the best model in a family without hardcoding a version string. Recent models available include **Claude Opus 5** (v1.0.75+), the latest in Anthropic's Opus family for the most demanding tasks, and **Grok 4.5** (v1.0.76+) from xAI.
 
@@ -663,6 +667,8 @@ Use `/diagnose` when a session is behaving unexpectedly — it inspects session 
 
 **Keyboard shortcuts for queuing messages**: Use **Ctrl+Q** or **Ctrl+Enter** to queue a message (send it while the agent is still working). **Ctrl+D** no longer queues messages — it now has its default terminal behavior. If you have muscle memory for Ctrl+D queuing, switch to Ctrl+Q.
 
+**Voice dictation** *(v1.0.81+)*: Press **Ctrl+Space** to toggle voice dictation in an interactive session. Speak your prompt and it will be transcribed into the input box, ready to send or edit before submitting. This is useful when you prefer to talk through a complex task rather than type it.
+
 **Directable queue manager** *(v1.0.76+)*: While the agent is working, you can manage your queued messages before they are sent. Open the queue manager to **reorder**, **edit**, **remove**, or **repeat** queued messages — even send one immediately out of turn. This is useful when you think of a better follow-up mid-run or want to reprioritize what the agent works on next.
 
 **Background running tasks**: Press **Ctrl+X → B** to move the current running task or shell command to the background. The task continues executing while you can type a new message or review earlier output. This is useful for long-running commands where you want to interact with the agent while waiting for the result.
@@ -690,6 +696,11 @@ The `/env` command shows all loaded environment details — instructions, MCP se
 ```
 /env
 ```
+
+*(v1.0.81+)* Two new dedicated commands provide focused views of specific resource types:
+
+- **`/subagents`** — opens a panel showing all available custom agents and subagent configuration (previously accessible only from the retired `/plugins` dashboard).
+- **`/instructions`** — opens a panel listing each loaded instruction file separately, so you can see exactly which instruction files are active and from which sources (user, repo, or plugin).
 
 The `/context` command shows a visualization of the current conversation's context window usage — how many tokens are consumed and how much headroom remains:
 
@@ -785,6 +796,8 @@ The `-C <directory>` flag changes the working directory before starting, similar
 copilot -C ~/projects/my-repo          # start in a different directory
 copilot -C ~/projects/my-repo -p "..."  # combine with prompt mode
 ```
+
+**Session restore on startup** *(v1.0.81+)*: When you restart the CLI after a crash or machine restart, Copilot automatically detects sessions that were still open and offers to restore them. This means you don't need to manually reopen each session by hand after an unexpected shutdown — just start the CLI and accept the restore prompt.
 
 The `--mode` flag (along with its aliases `--autopilot` and `--plan`) lets you launch the CLI directly in a specific agent mode without waiting for the interactive session to start:
 
