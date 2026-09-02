@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-08-28
+lastUpdated: 2026-09-02
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -98,6 +98,19 @@ Agent Merge also understands **stacked pull requests**: it shows a stack summary
 ### Requesting Code Reviews
 
 From the app, you can request a Copilot code review on a pull request—and re-request a review even from reviewers who already responded—without leaving the session. This keeps the review loop inside the same workspace where the change was made.
+
+### Customize: Managing Plugins, Skills, MCP Servers, and Canvases
+
+> **New (v1.1.13+)**: The **Customize** view is now available to everyone, giving you a single place to browse, install, and manage plugins, skills, MCP servers, and canvases—no separate configuration files or CLI commands required.
+
+From Customize, you can:
+
+- **Browse Featured**: Discover curated plugins and canvases, including integrations like Azure DevOps and Figma, with clear Install/Installing states that update automatically once a resource finishes installing
+- **Manage Installed resources**: See every installed skill, plugin, canvas, agent extension, and MCP server in one list, each with a consistent source label and icon showing where it came from
+- **Create personal skills**: Author, edit, or remove your own personal skills directly from the app instead of hand-editing files in `.github/skills/`
+- **Inspect canvas details**: View a canvas's provider and requirements before installing, and start a new session for it directly from its details view
+
+This complements the file-based customization described below—Customize is a graphical front end for the same underlying plugins, skills, and MCP configuration, so changes you make here are reflected if you also work from the CLI or VS Code.
 
 ## Who is the Copilot app for?
 
