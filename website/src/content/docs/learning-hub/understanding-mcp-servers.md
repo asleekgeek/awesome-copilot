@@ -3,7 +3,7 @@ title: 'Understanding MCP Servers'
 description: 'Learn how Model Context Protocol servers extend GitHub Copilot with access to external tools, databases, and APIs.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-08-28
+lastUpdated: 2026-09-04
 estimatedReadingTime: '8 minutes'
 tags:
   - mcp
@@ -93,6 +93,8 @@ Example `.mcp.json` or `.vscode/mcp.json`:
 ```
 
 > **Protocol update (v1.0.81+)**: GitHub Copilot CLI, the SDK, IDE integrations, and in-memory clients now support the **MCP 2026-07-28 specification**, keeping compatibility current with the latest Model Context Protocol servers as they adopt the new spec revision.
+
+> **MCP OAuth sign-in via CIMD (v1.0.83+)**: GitHub Copilot CLI now supports **Client ID Metadata Document (CIMD)** for MCP OAuth sign-in, letting remote MCP servers verify the CLI's client identity through a hosted metadata document instead of requiring manual client registration. This streamlines the OAuth authorization flow when connecting to remote servers that support CIMD-based dynamic client verification.
 
 ### Installing MCP Servers from the Registry
 

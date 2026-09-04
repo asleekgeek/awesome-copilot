@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-04
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -92,6 +92,8 @@ For a hands-on guide to building canvases with `/create-canvas`, see [Working wi
 
 This makes Customize a good starting point if you want to extend the app's capabilities but don't need the full `copilot plugin` CLI workflow described in [Installing and Using Plugins](../installing-and-using-plugins/).
 
+**Installing MCP servers via deep link** *(v1.1.15+)*: You can now install an MCP server by opening a deep link, which shows a prefilled review form summarizing the server's configuration for you to confirm before it's added — useful for sharing a one-click install link in documentation or onboarding guides instead of walking teammates through manual JSON configuration.
+
 ### Agent Merge
 
 **Agent Merge** is a feature that can carry your pull requests through the entire workflow:
@@ -108,6 +110,14 @@ Agent Merge also understands **stacked pull requests**: it shows a stack summary
 ### Requesting Code Reviews
 
 From the app, you can request a Copilot code review on a pull request—and re-request a review even from reviewers who already responded—without leaving the session. This keeps the review loop inside the same workspace where the change was made.
+
+### Setting a Persistent Goal for Autopilot
+
+**`/goal`** *(v1.1.15+)* lets you set a persistent objective for autopilot to work towards within a local session. Instead of re-explaining the overall objective after each autopilot continuation, set it once with `/goal` and the agent keeps referencing it as it works through the todo list — the Autopilot status panel also shows your last prompt as the inferred objective, and a paused goal keeps a resume note so you can pick it back up later.
+
+### Windows Taskbar Session Status
+
+*(Copilot CLI v1.0.83+)* On Windows 11, running Copilot CLI sessions now appear directly in the taskbar with live hover status cards, so you can check whether a session is idle, running, or waiting for input without switching windows.
 
 ## Who is the Copilot app for?
 
