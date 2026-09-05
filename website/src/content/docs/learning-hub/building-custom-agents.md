@@ -85,6 +85,20 @@ tools: ['codebase', 'terminal', 'github']
 ---
 ```
 
+**model** *(v1.0.83+)*: Instead of a single model name, you can list several models. Copilot tries them in order until one is available to you — useful as a fallback chain when a preferred model is rate-limited or not enabled for your account:
+
+```yaml
+---
+name: 'Security Reviewer'
+description: 'Expert security auditor that reviews code for OWASP vulnerabilities'
+model: ['Claude Opus 4.5', 'Claude Sonnet 4.5', 'GPT-5']
+model-policy: required
+tools: ['codebase', 'terminal', 'github']
+---
+```
+
+**model-policy** *(v1.0.83+)*: Set to `required` to keep manual model changes restricted to the models listed in `model`, preventing the agent from being switched to a model outside that list mid-session.
+
 **tools** (recommended): An array of built-in tools and MCP servers the agent can access. Common tools include:
 
 | Tool | Purpose |

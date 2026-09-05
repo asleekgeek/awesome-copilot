@@ -54,7 +54,12 @@ Instead of checking GitHub, your CLI, and VS Code for updates, everything is in 
 
 The Copilot app includes built-in automations that can run scheduled tasks for you using the same agentic technology. You can use templates out of the box or create your own.
 
-Automations run in the context of a repository, so they can access issues, pull requests, and code. You can also choose whether they run as a plan, an interactive session, or on autopilot.
+Automations run in the context of a repository, so they can access issues, pull requests, and code. You can also choose whether they run as a plan, an interactive session, or on autopilot. *(v1.1.15+)*: You can view schedule details and cancel a scheduled automation directly from its pill in the composer.
+
+### Autopilot Goals
+
+*(v1.1.15+)*: Use the **`/goal`** command in a local session to set a persistent objective for autopilot to work towards. This keeps autopilot focused on the overarching outcome across multiple turns, rather than only the most recent instruction.
+
 
 ### Isolated Worktrees for Parallel Work
 
@@ -91,6 +96,8 @@ For a hands-on guide to building canvases with `/create-canvas`, see [Working wi
 - Create, edit, or remove your own **personal skills** directly in the app, without hand-authoring a `SKILL.md` file
 
 This makes Customize a good starting point if you want to extend the app's capabilities but don't need the full `copilot plugin` CLI workflow described in [Installing and Using Plugins](../installing-and-using-plugins/).
+
+*(v1.1.15+)*: MCP servers can also be installed via a deep link, which opens a prefilled review form for confirmation before the server is added—useful for sharing a ready-to-install server configuration with teammates.
 
 ### Agent Merge
 
