@@ -3,7 +3,7 @@ title: "Using Automations in the GitHub Copilot app"
 description: "A practical guide to getting started with Copilot app automations using templates, iterative refinement, and real-world examples."
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-06-17
+lastUpdated: 2026-09-08
 estimatedReadingTime: "10 minutes"
 tags:
   - copilot-app
@@ -108,3 +108,9 @@ Use these as patterns, then tailor them to your own repo, rituals, and communica
 ## Next step
 
 Open **Automations**, pick one template, and convert one recurring task you currently do manually into a daily run. That single win usually makes the next automation obvious.
+
+## Automations also arrived in VS Code (v1.137+, Preview)
+
+The same recurring-task pattern is now available directly inside the editor. Enable `chat.automations.enabled` in VS Code settings, open the **Agents window**, and select **Automations** in the sidebar. As in the Copilot app, you can start from a template — catching up on changes, triaging issues, finding bugs — or write your own prompt, then run it on demand or schedule it hourly, daily, or weekly.
+
+This VS Code feature is separate from Copilot app automations: it runs from the editor's Agents window rather than the standalone app, and it is rolling out gradually as a Preview feature rather than generally available. The underlying idea — save a prompt once, run it repeatedly without manual triggering — is the same, so the templates and prompt-refinement guidance above apply equally well to VS Code automations. See the [VS Code automations documentation](https://code.visualstudio.com/docs/agents/run/automations) for setup details specific to the editor.
