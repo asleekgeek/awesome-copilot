@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-09
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -434,9 +434,15 @@ CLI settings use **camelCase** naming. Key settings added in recent releases:
 
 > **Note**: Older snake_case names (e.g., `include_gitignored`, `auto_updates_channel`) are still accepted for backward compatibility, but camelCase is now the preferred format.
 
-> **Session restore after a crash (v1.0.81+)**: If the CLI is interrupted unexpectedly — a crash or a machine restart — startup now offers to restore any sessions that were still open, so you don't have to reopen each terminal by hand.
+> **Session restore after a crash (v1.0.81+, prompt off by default since v1.0.83)**: If the CLI is interrupted unexpectedly — a crash or a machine restart — startup offers to restore any sessions that were still open, so you don't have to reopen each terminal by hand. As of v1.0.83, the CLI no longer shows this restore prompt automatically at startup; re-enable it in `/settings` if you want the prompt back.
 
 > **Piping an auth token (v1.0.81+)**: Use `copilot login --with-token` to read an authentication token from stdin instead of going through the interactive browser or device-code flow — useful for scripted or containerized setups where a token is already available in the environment.
+
+> **Enterprise sign-in restrictions (v1.0.83+)**: Enterprise admins can set the `forceLoginOrgs` managed setting to pin sign-in to a list of approved GitHub organizations, preventing users from authenticating against unapproved accounts.
+
+> **HTTPS proxy mTLS (v1.0.83+)**: The CLI's `proxy` setting now supports automatic mutual TLS (mTLS) client certificate authentication for model and web requests routed through an HTTPS proxy, for environments that require client-certificate-based proxy authentication.
+
+> **Sandboxed `gh` authentication (v1.0.83+)**: Sandboxed `gh` commands now authenticate as the account configured for the repository instead of using the Copilot CLI login, so sandboxed `gh` operations act with the expected repository identity.
 
 In addition to the main config file, GitHub Copilot CLI reads two optional per-project files for repository-specific overrides:
 
@@ -846,6 +852,8 @@ These flags apply only to the current invocation — your persisted sandbox pref
 **`worktreeBaseRef` setting** *(v1.0.79-8+)*: Controls whether `/worktree`, `/worktree new`, and the `--worktree` startup flag create the new worktree from `HEAD` or from the remote default branch. All three now default to `HEAD`; previously `--worktree` defaulted to starting from the remote default branch. Set this in `/settings` if you want worktrees to branch from the remote default instead.
 
 > **Breaking change — sandbox network isolation (v1.0.83+)**: On macOS and Linux, sandboxed commands can no longer reach services running on your own machine, including a server the sandboxed command itself starts on `127.0.0.1`. This means test suites that bind a local port will fail inside the sandbox. Turn on **Allow local network** in `/sandbox` to restore access to localhost. On Linux, sandboxing also now requires `slirp4netns`, `nsenter`, `iptables`, `ip6tables`, `iptables-restore`, and `ip6tables-restore` on `PATH` — install these if sandboxed commands start failing to launch. Additionally, Linux sandboxes now restrict network egress to the configured HTTP(S) proxy when one is set; this proxy mode requires `slirp4netns`, `util-linux` 2.35+, `iptables`, and `/dev/net/tun` access.
+
+**`/sandbox policy` readability (v1.0.83+)**: The `/sandbox policy` view (introduced in v1.0.79 to show effective sandbox paths, denials, and network access) now groups path grants by their source and lists the developer tools it has detected, making it easier to see at a glance why a path is readable, writable, or blocked.
 
 The `--attachment` flag (available in prompt mode, `-p`) lets you attach files — images or native documents — to the initial prompt in non-interactive mode:
 
