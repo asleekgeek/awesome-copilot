@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-10
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -81,6 +81,13 @@ Closing the app's main window keeps it running in the background instead of quit
 - This makes it easy to see exactly what an agent is doing and step in when needed
 
 For a hands-on guide to building canvases with `/create-canvas`, see [Working with Canvas Extensions](../working-with-canvas-extensions/).
+
+### Composer Slash Commands
+
+The message composer supports slash commands for quick actions without leaving the conversation:
+
+- **`/goal`** *(v1.1.15+)* sets a persistent objective for autopilot to work toward in a local session. The **Goal pill** *(v1.1.17+)* in the composer shows the goal's live status (Active, Paused, Done) and expands to show the objective, completion summary, pause reason, turn count, and AI Credits usage.
+- **`/settings`** *(v1.1.16+)* opens app settings directly from the composer, without navigating to a separate settings page.
 
 ### Customize
 
