@@ -3,7 +3,7 @@ title: 'Installing and Using Plugins'
 description: 'Learn how to find, install, and manage plugins that extend GitHub Copilot CLI with reusable agents, skills, hooks, and integrations.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-01
+lastUpdated: 2026-09-11
 relatedArticles:
   - ./building-custom-agents.md
   - ./creating-effective-skills.md
@@ -251,9 +251,36 @@ This opens an interactive list where each installed plugin and its components ar
 
 *(v1.0.81+)* `/plugin` also flags installed plugins and marketplaces that have a newer version available upstream, and offers an **Update** action to pull the latest version directly from the dashboard.
 
-> **Note**: Enabling and disabling hooks and LSP servers individually is temporarily unavailable following the `/plugins` removal — those toggles previously lived only in the retired dashboard.
-
 > **Dashboard available to everyone (v1.0.81+)**: The plugins dashboard (`/plugin`, `/mcp`, and `/skills`) is now on for all users by default. If you need to opt out, set `PLUGINS_DASHBOARD=false`, which also restores the legacy `copilot plugins` command. This opt-out was later removed in the same release, along with the legacy skills picker it kept alive — `/skills`, bare `/mcp`, and `/mcp show` (with no server name) always open the dashboard now, and `/mcp config` opens the dedicated MCP wizard.
+
+### Kind-Specific CLI Subcommands (v1.0.84+)
+
+The old cross-kind `copilot plugins` subcommand — which used `--kind`, `--scope`, `--mcp`, and `--skill` flags to manage different component types through one command — has been replaced by dedicated subcommands for each component type:
+
+```bash
+# List components by type
+copilot plugin list          # installed plugins only
+copilot mcp list             # MCP servers
+copilot skill list           # skills
+copilot instruction list     # instructions
+copilot lsp list             # LSP servers
+
+# Enable or disable a component
+copilot plugin enable my-plugin
+copilot plugin disable my-plugin
+copilot mcp enable my-server
+copilot skill disable my-skill
+```
+
+This resolves the earlier limitation where hooks and LSP servers couldn't be toggled individually outside the dashboard — `copilot mcp enable/disable` and the equivalent LSP commands now cover that gap from the CLI.
+
+> **Breaking changes (v1.0.84+)**:
+> - `copilot plugins install --skill [--scope project]` is replaced by `copilot skill add [--project]`; the `--scope` spelling is gone.
+> - The cross-kind `--kind`, `--scope`, `--mcp`, and `--skill` flags are removed from `copilot plugins`; use `copilot mcp` and `copilot skill` instead.
+> - `copilot plugins list --json` now emits a flat array of plugins instead of the old `{ plugins, errors }` object — update any scripts that read `.plugins` from the JSON output.
+> - `copilot plugins list` is now an alias of `copilot plugin list` and reports only plugins, no longer MCP servers, skills, instructions, or LSP servers.
+>
+> `--json` output is also now available on `copilot plugin list`, `copilot plugin marketplace list`, and `copilot plugin marketplace browse` for scripting.
 
 ### Loading Plugins from a Local Directory
 
