@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-12
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -108,6 +108,20 @@ Agent Merge also understands **stacked pull requests**: it shows a stack summary
 ### Requesting Code Reviews
 
 From the app, you can request a Copilot code review on a pull request—and re-request a review even from reviewers who already responded—without leaving the session. This keeps the review loop inside the same workspace where the change was made.
+
+### Editing Issues and Pull Requests In-App
+
+*(v1.1.18+)* You can edit issue and pull request titles and descriptions, and edit, delete, or hide comments—directly in the app, with an edited indicator shown on changed comments. This removes a common context switch back to github.com for routine cleanup while reviewing an agent's work.
+
+Pull request **fix buttons** also gained a **"Fix with instructions"** option *(v1.1.18+)*, letting you add guidance before the agent runs the fix rather than only accepting the default behavior.
+
+### Chats Pill and Cross-Session Messaging
+
+*(v1.1.18+)* A **Chats pill** above the composer shows unread and input-required status across your side chats, with quick navigation between them. Combined with the `send_message` session-management tool, an agent can message another running or backgrounded session—useful for coordinating multiple in-flight sessions without switching windows yourself.
+
+### Generated Artifacts in the Files Tab
+
+*(v1.1.20+)* Generated Markdown artifacts (for example, a summary or report an agent produces) now open in the **Files** tab alongside your repository files, with a switcher to move between them and an option to promote an artifact into the repository if you want to keep it.
 
 ## Who is the Copilot app for?
 

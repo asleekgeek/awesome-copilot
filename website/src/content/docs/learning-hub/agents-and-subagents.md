@@ -3,7 +3,7 @@ title: 'Agents and Subagents'
 description: 'Learn how delegated subagents differ from primary agents, when to use them, and how to launch them in VS Code and Copilot CLI.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-02
+lastUpdated: 2026-09-12
 estimatedReadingTime: '9 minutes'
 tags:
   - agents
@@ -199,6 +199,14 @@ If you share agent files across surfaces, document those differences so users kn
 When an agent delegates work to multiple chats, VS Code's **Agents window** now shows those chats as children of their parent session in the sessions list, so you can see which chats belong together instead of managing a flat list of unrelated sessions. Each chat row shows its own title, status, and pending approvals. A delegated request also includes a source link (for example **Sent by another session**) so you can jump straight back to whichever session or chat initiated it.
 
 This pairs with **improved workspace resolution**: agents can resolve a workspace by project name (for example, "run this in the vscode workspace") in addition to absolute paths, which simplifies prompts that hand off work across multiple repositories.
+
+## VS Code Automations and Voice Mode (v1.137+)
+
+**Automations (Preview)** *(`chat.automations.enabled`)* let you schedule recurring agent tasks — hourly, daily, or weekly, or run on demand — directly from the Agents window's **Automations** sidebar entry. Start from a template for catching up on changes, triaging issues, or finding bugs, or define your own prompt and schedule. This brings the same recurring-task pattern already available in the [Copilot app](../using-automations-in-copilot-app/) into VS Code.
+
+**Voice Mode (Experimental)** *(`agents.voice.enabled`)* lets you have a natural, spoken conversation with an agent while it works on your code. While the agent is speaking, start speaking or use the push-to-talk shortcut to interrupt and redirect it. Voice Mode requires an eligible individual GitHub Copilot plan and is not available with GitHub Copilot Business or Enterprise; organizations can also disable Copilot preview features by policy.
+
+**Continue quick chats in a workspace**: A quick chat started without an associated workspace (for general questions or ideas) can be attached to a local folder later — ask the agent to attach a project, and the chat becomes a workspace session while retaining its title, history, and current request.
 
 ## Common questions
 

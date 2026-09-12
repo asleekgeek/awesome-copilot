@@ -3,7 +3,7 @@ title: 'GitHub Copilot Terminology Glossary'
 description: 'A quick reference guide defining common GitHub Copilot and platform-specific terms.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-12
 estimatedReadingTime: '8 minutes'
 tags:
   - glossary
@@ -288,6 +288,22 @@ A VS Code component (v1.136+) that lets multiple VS Code windows connect to the 
 **When to use**: When you want a consistent agent session shared across multiple editor windows, or when you want the same underlying agent behavior across VS Code, the CLI, and the Copilot app.
 
 **Related terms**: [Agent](#agent), [Coding Agent](#coding-agent)
+
+---
+
+### VS Code Automations (Preview)
+
+A VS Code feature (v1.137+, enabled via `chat.automations.enabled`) that schedules recurring agent tasks — hourly, daily, weekly, or on demand — from the Agents window's **Automations** sidebar entry. Start from a built-in template (catching up on changes, triaging issues, finding bugs) or define a custom prompt and schedule. This mirrors the automations feature already available in the [GitHub Copilot app](../using-automations-in-copilot-app/).
+
+**Related terms**: [Agent](#agent), [Coding Agent](#coding-agent)
+
+---
+
+### Voice Mode
+
+An experimental VS Code feature (v1.137+, enabled via `agents.voice.enabled`) that lets you have a natural, spoken conversation with an agent while it works on your code. You can interrupt or redirect the agent mid-response by speaking or using a push-to-talk shortcut. Voice Mode requires an eligible individual GitHub Copilot plan and is not available with GitHub Copilot Business or Enterprise.
+
+**Related terms**: [Agent Host](#agent-host)
 
 ---
 

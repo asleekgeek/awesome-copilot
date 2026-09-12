@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-12
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -903,6 +903,42 @@ echo 'source ~/.copilot-completion.bash' >> ~/.bashrc
 ```
 
 > **Tip**: Reload your shell (`source ~/.bashrc` or open a new terminal) after adding the completion script for changes to take effect.
+
+### Vim Mode
+
+**Vim mode** *(v1.0.84+, previously experimental)* is now available to everyone. Turn it on with `/vim` or by setting `editorMode` to `vim` for modal editing in the composer, with the current mode (Normal/Insert) shown while you type:
+
+```
+/vim
+```
+
+This gives keyboard-centric users familiar Vim-style navigation and editing commands directly in the prompt composer, without leaving the CLI.
+
+### Session Restore
+
+Startup now offers to restore sessions that were still open when their CLI process went away *(v1.0.81+)* — so a crash or machine restart no longer means manually reopening each terminal. As of v1.0.84, the CLI starts without this interrupted-session restore prompt by default; enable it again in `/settings` if you want the prompt back.
+
+### Plugin CLI Command Restructuring
+
+*(v1.0.84+)* Several `copilot plugins` subcommands were split into dedicated, resource-specific commands for clarity:
+
+```bash
+# New dedicated list commands, replacing --kind flags
+copilot instruction list      # was: copilot plugins list --kind instruction
+copilot lsp list              # was: copilot plugins list --kind lsp
+
+# New enable/disable commands, replacing --plugin/--mcp/--skill flags
+copilot plugin enable my-plugin
+copilot mcp disable my-server
+copilot skill enable my-skill
+
+# JSON output added to plugin list/marketplace commands
+copilot plugin list --json
+copilot plugin marketplace list --json
+copilot plugin marketplace browse --json
+```
+
+> **Breaking change (v1.0.84+)**: `copilot plugins install --skill [--scope project]` is replaced by `copilot skill add [--project]` — the `--scope` spelling is gone. The cross-kind `--kind`, `--scope`, `--mcp`, and `--skill` flags on `copilot plugins` were removed; use `copilot mcp` and `copilot skill` instead. `copilot plugins list --json` now emits a flat array of plugins instead of the old `{ plugins, errors }` object, and `copilot plugins list` (no `--json`) is now an alias of `copilot plugin list` that reports only plugins — not MCP servers, skills, instructions, or LSP servers. Update any scripts that parsed the old shapes.
 
 ## Common Questions
 
