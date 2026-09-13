@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-07
+lastUpdated: 2026-09-13
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -438,6 +438,10 @@ CLI settings use **camelCase** naming. Key settings added in recent releases:
 
 > **Piping an auth token (v1.0.81+)**: Use `copilot login --with-token` to read an authentication token from stdin instead of going through the interactive browser or device-code flow — useful for scripted or containerized setups where a token is already available in the environment.
 
+> **Vim mode for the composer (v1.0.84+)**: Modal editing is available to everyone. Turn it on with `/vim`, or set `"editorMode": "vim"` in your settings so it's on by default in every session. The current mode (normal or insert) is shown while you type, just like in a real modal editor.
+
+> **Session and memory import (v1.0.84+)**: `copilot session import` and `copilot memory import` read from a semantic JSONL interchange format, letting you bring conversation history or memory entries from another tool or a backup into Copilot CLI instead of starting from scratch.
+
 In addition to the main config file, GitHub Copilot CLI reads two optional per-project files for repository-specific overrides:
 
 - `.claude/settings.json` — committed project settings
@@ -713,7 +717,7 @@ The `/context` command shows a visualization of the current conversation's conte
 /context
 ```
 
-The `/usage` command displays session metrics such as the number of tokens consumed, API calls made, and any quota information for the current session. In v1.0.64+, `/usage` also shows per-model token totals when you have used multiple models in a session:
+The `/usage` command displays session metrics such as the number of tokens consumed, API calls made, and any quota information for the current session. In v1.0.64+, `/usage` also shows per-model token totals when you have used multiple models in a session. In v1.0.84+, the breakdown also includes per-model **AI Credit** consumption, so usage-based billing users can see exactly which model drove spend during the session:
 
 ```
 /usage
