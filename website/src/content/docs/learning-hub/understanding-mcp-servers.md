@@ -3,7 +3,7 @@ title: 'Understanding MCP Servers'
 description: 'Learn how Model Context Protocol servers extend GitHub Copilot with access to external tools, databases, and APIs.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-05
+lastUpdated: 2026-09-14
 estimatedReadingTime: '8 minutes'
 tags:
   - mcp
@@ -109,6 +109,8 @@ You can also install a specific server by name directly:
 ```
 /mcp install @modelcontextprotocol/server-postgres
 ```
+
+> **Install via deep link (Copilot app, v1.1.15+)**: The GitHub Copilot app lets you install MCP servers via a deep link, which opens a prefilled review form summarizing the server and its required configuration for you to confirm before adding it — useful for sharing a one-click install link for an internal or team-recommended MCP server instead of walking teammates through manual JSON setup.
 
 This guided flow is the recommended way to add new MCP servers, especially for servers that require multiple configuration values.
 

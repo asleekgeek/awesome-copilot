@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-12
+lastUpdated: 2026-09-14
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -116,6 +116,20 @@ From the app, you can request a Copilot code review on a pull request—and re-r
 ### Quick App Settings and PR Editing
 
 Open app settings directly from the message composer with **`/settings`** *(v1.1.16+)*, without leaving your current conversation. You can also now edit issue and pull request titles and descriptions, and edit, delete, or hide comments *(v1.1.18+)*, directly from the app—useful when a Copilot-drafted PR description needs a quick fix before merge. Pull request fix buttons also gained a **"Fix with instructions"** option *(v1.1.18+)* so you can add guidance before Copilot runs the fix.
+
+### Files Tab and Generated Artifacts
+
+*(v1.1.20+)* Generated Markdown artifacts—like research reports or plans a session produces—now open in the **Files tab** alongside your repository files, with a switcher to move between generated artifacts and added file/folder sources. A **promote** action lets you turn a useful artifact into a real file in the repository instead of copy-pasting its contents by hand. A source switcher in the Files tab *(v1.1.17+)* lets you browse these sources without leaving the tab.
+
+### Chats Pill and Side Conversations
+
+A **Chats pill** above the composer *(v1.1.18+)* shows unread and input-required status for side conversations, with quick navigation to jump straight to the chat that needs your attention—useful when you have several side discussions going alongside the main session.
+
+### Disambiguating Agents from Multiple Plugins
+
+*(v1.1.20+)* If two installed plugins each contribute a custom agent with the same display name, the agent picker now shows which plugin each one belongs to, so you can tell them apart before starting a session.
+
+> **Naming update (v1.1.20+)**: The "Start from scratch" option in session creation menus and project pickers is now labeled **"Chat"**.
 
 ## Who is the Copilot app for?
 
