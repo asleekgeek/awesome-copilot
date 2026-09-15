@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-12
+lastUpdated: 2026-09-15
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -605,6 +605,8 @@ Unlike `/worktree` (which keeps the current conversation), `/new-worktree` is th
 /worktree new my-feature-branch
 ```
 
+> **Note**: `/worktree`, `/move`, and the `--worktree` startup flag were previously experimental features. As of v1.0.84+, all three are available to everyone without enabling experimental mode.
+
 The `/every` command (also available as `/loop` since v1.0.64) schedules a recurring prompt to run automatically at a specified interval. The companion `/after` command runs a prompt once after a specified delay. Both are useful for self-paced automation — polling for results, periodically summarizing progress, or triggering other slash commands on a timer:
 
 ```
@@ -945,6 +947,20 @@ copilot skill enable my-skill    # enable a specific skill
 ### Command-Line Parsing Rewrite
 
 *(v1.0.84+)* Command-line parsing moved from Commander to a Rust-based grammar that mirrors what the CLI actually parses, which also generates shell completions directly from that grammar — so `copilot <TAB>` now offers root flags alongside subcommands, and each subcommand only shows its own options. As a result of this change, some error and help wording changed, `copilot login --host` now works correctly, and `--max-autopilot-continues` no longer accepts scientific notation as a value.
+
+### Debug Logs and Concise Transcripts
+
+*(v1.0.84+)* `/collect-debug-logs` (and the equivalent `--collect-debug-logs` flag) is now available to everyone, no longer requiring experimental mode. Use it to bundle diagnostic logs for troubleshooting or when filing a bug report:
+
+```
+/collect-debug-logs
+```
+
+*(v1.0.84+)* Set `transcriptView` to `"concise"` in your settings to group tool activity into expandable work summaries instead of showing every tool call inline — useful for keeping long sessions readable while still letting you expand a summary to see the full detail behind it.
+
+### Context Management Tools for Subagents
+
+*(v1.0.84+)* New `/settings` options let you opt in to context management tools for agents and subagents, giving delegated work more control over how it manages its own context window during longer or more complex tasks. See [Agents and Subagents](../agents-and-subagents/) for more on how subagents use isolated context.
 
 ## Common Questions
 
