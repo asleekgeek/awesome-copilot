@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-12
+lastUpdated: 2026-09-16
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -471,6 +471,8 @@ The model picker opens in a **full-screen view** with inline reasoning effort ad
 
 When you leave plan mode, the CLI automatically reverts to your session model. This pairing works well with repository model pinning — you can enforce a high-quality model for implementation while allowing a lighter model during exploration and planning.
 
+**Streamer mode**: Run `/streamer-mode` to hide preview model names and quota details when screen-sharing or recording. *(v1.0.85+)* Toggling it now also masks internal model names in the `/model` picker, the footer, and startup diagnostics, and applies immediately without restarting model initialization.
+
 ### CLI Session Commands
 
 The `/settings` command (v1.0.61+) opens an interactive dialog to browse and edit all user settings in one place. Use it to discover available settings, toggle options, and update values without manually editing your config file:
@@ -591,7 +593,7 @@ In v1.0.66+, you can pass a task description to `/worktree` to name the branch f
 
 This creates a branch named from your task description and begins working on it immediately, making it easy to spin up parallel work without stopping to think of a branch name.
 
-After the command runs, the session is inside the new worktree. Use this when you want to work on a second task in parallel without stashing changes or opening a new terminal. In v1.0.64+ you can also use the experimental `--worktree` flag at startup (`copilot -w [name]`) to create or reuse a worktree under `<repo>.worktrees/` before the session begins.
+After the command runs, the session is inside the new worktree. Use this when you want to work on a second task in parallel without stashing changes or opening a new terminal. You can also use the `--worktree` flag at startup (`copilot -w [name]`) to create or reuse a worktree under `<repo>.worktrees/` before the session begins. **As of v1.0.85**, `/worktree`, `/move`, and `--worktree` are all generally available and no longer require enabling experimental mode.
 
 The `/new-worktree` command *(v1.0.78+, experimental)* creates a new worktree and starts a **fresh conversation** in it — without inheriting the current session's history. This is useful when you want a completely clean slate for a new task in a parallel branch:
 
@@ -945,6 +947,22 @@ copilot skill enable my-skill    # enable a specific skill
 ### Command-Line Parsing Rewrite
 
 *(v1.0.84+)* Command-line parsing moved from Commander to a Rust-based grammar that mirrors what the CLI actually parses, which also generates shell completions directly from that grammar — so `copilot <TAB>` now offers root flags alongside subcommands, and each subcommand only shows its own options. As a result of this change, some error and help wording changed, `copilot login --host` now works correctly, and `--max-autopilot-continues` no longer accepts scientific notation as a value.
+
+### Agent Factory Pause and Resume
+
+*(v1.0.85+)* Agent Factory runs — background workflows that generate and iterate on custom agents — can now be paused and resumed from the `/factories` dialog, instead of running uninterrupted to completion. This makes it easier to check in on a long-running factory job, pause it if it's heading in the wrong direction, and resume it later without losing progress.
+
+### Debug Log Collection for Everyone
+
+*(v1.0.85+)* `/collect-debug-logs` and the equivalent `--collect-debug-logs` startup flag are now available to all users, no longer gated behind experimental mode. Use them to bundle diagnostic logs when reporting an issue with the CLI.
+
+### Concise Transcript View
+
+*(v1.0.85+)* Set `transcriptView` to `"concise"` in your settings to group tool activity into expandable work summaries instead of showing every tool call inline. This keeps the conversation transcript shorter and easier to scan, while still letting you expand a summary to see the underlying tool calls when you need the detail.
+
+### Context Management Tools for Agents and Subagents
+
+*(v1.0.85+)* Opt in from `/settings` to give agents and subagents access to context management tools, letting them manage their own context window (for example, deciding when to compact) rather than relying solely on the CLI's automatic handling.
 
 ## Common Questions
 
