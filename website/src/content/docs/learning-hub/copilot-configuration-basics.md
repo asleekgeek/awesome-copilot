@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-12
+lastUpdated: 2026-09-18
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -431,6 +431,8 @@ CLI settings use **camelCase** naming. Key settings added in recent releases:
 | `stayInAutopilot` | Keep the CLI in autopilot mode after an autopilot task completes, instead of returning to interactive mode (v1.0.69+) |
 | `defaultMode` | Startup mode for new interactive sessions (e.g., `interactive`, `autopilot`, `plan`) (v1.0.81+) |
 | `defaultPermissionMode` | Default approval behaviour for new interactive sessions, independent from `defaultMode` (v1.0.81+) |
+| `transcriptView` | Set to `"concise"` to group tool activity into expandable work summaries instead of a fully expanded timeline (v1.0.85+) |
+| `editorMode` | Set to `"vim"` to enable Vim modal editing by default for every session (v1.0.85+) |
 
 > **Note**: Older snake_case names (e.g., `include_gitignored`, `auto_updates_channel`) are still accepted for backward compatibility, but camelCase is now the preferred format.
 
@@ -945,6 +947,22 @@ copilot skill enable my-skill    # enable a specific skill
 ### Command-Line Parsing Rewrite
 
 *(v1.0.84+)* Command-line parsing moved from Commander to a Rust-based grammar that mirrors what the CLI actually parses, which also generates shell completions directly from that grammar — so `copilot <TAB>` now offers root flags alongside subcommands, and each subcommand only shows its own options. As a result of this change, some error and help wording changed, `copilot login --host` now works correctly, and `--max-autopilot-continues` no longer accepts scientific notation as a value.
+
+### Streamer Mode
+
+*(v1.0.85+)* **Streamer mode** masks internal model names in `/model`, the footer, and startup diagnostics, without restarting model initialization when you toggle it. This is useful when sharing your screen or recording a session and you don't want to reveal which specific model is powering the CLI.
+
+### Concise Transcript View
+
+*(v1.0.85+)* Set `transcriptView` to `"concise"` to group tool activity into expandable work summaries instead of showing every tool call expanded in the timeline. This keeps long sessions with lots of tool use easier to scan — expand a summary only when you need the full detail.
+
+### Context Management Tools for Subagents
+
+*(v1.0.85+)* Run `/settings` and opt in to **context management tools for agents and subagents** to give delegated subagents explicit tools for managing their own context window during long-running tasks. See [Agents and Subagents](../agents-and-subagents/) for more on subagent delegation patterns.
+
+### Repository Instructions for Custom Agents
+
+*(v1.0.86+)* Custom agents can opt into repository instruction files (`AGENTS.md`, `copilot-instructions.md`, `CLAUDE.md`) by setting `include-custom-instructions: true` in their frontmatter, even when the agent would otherwise run without them. See [Building Custom Agents](../building-custom-agents/) for the frontmatter syntax.
 
 ## Common Questions
 

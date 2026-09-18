@@ -3,7 +3,7 @@ title: 'Building Custom Agents'
 description: 'Learn how to create specialized GitHub Copilot agents with custom personas, tool integrations, and domain expertise.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-05
+lastUpdated: 2026-09-18
 estimatedReadingTime: '10 minutes'
 tags:
   - agents
@@ -107,6 +107,18 @@ tools: ['codebase', 'terminal', 'github']
 | `edit` | Modify files in the workspace |
 
 For MCP server tools, reference them by server name (e.g., `postgres`, `docker`). See [Understanding MCP Servers](../understanding-mcp-servers/) for details.
+
+**include-custom-instructions** *(v1.0.86+)*: Set this to `true` to have the agent load repository instruction files — `AGENTS.md`, `copilot-instructions.md`, and `CLAUDE.md` — even in contexts where custom agents don't automatically pick them up. This is useful when an agent needs to stay aligned with team-wide conventions defined outside its own frontmatter:
+
+```yaml
+---
+name: 'Release Manager'
+description: 'Automates release preparation including changelog generation and version bumping'
+model: Claude Sonnet 4
+include-custom-instructions: true
+tools: ['codebase', 'terminal', 'github']
+---
+```
 
 ### Agent Instructions
 
