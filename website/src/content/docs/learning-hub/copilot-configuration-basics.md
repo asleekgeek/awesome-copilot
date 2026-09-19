@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-12
+lastUpdated: 2026-09-19
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -945,6 +945,18 @@ copilot skill enable my-skill    # enable a specific skill
 ### Command-Line Parsing Rewrite
 
 *(v1.0.84+)* Command-line parsing moved from Commander to a Rust-based grammar that mirrors what the CLI actually parses, which also generates shell completions directly from that grammar — so `copilot <TAB>` now offers root flags alongside subcommands, and each subcommand only shows its own options. As a result of this change, some error and help wording changed, `copilot login --host` now works correctly, and `--max-autopilot-continues` no longer accepts scientific notation as a value.
+
+### Context Management Tools for Agents and Subagents
+
+*(v1.0.85+)* `/settings` now includes an opt-in to expose **context management tools** to agents and subagents — letting them proactively inspect and manage their own context window (for example, summarizing or trimming older history) instead of relying solely on automatic compaction. This is useful for long-running orchestrated tasks where a subagent needs fine-grained control over what it keeps in context.
+
+### Concise Transcript View
+
+*(v1.0.85+)* Set `transcriptView` to `"concise"` in your settings to group tool activity into expandable work summaries instead of showing every tool call inline. This keeps the timeline shorter and easier to scan for long sessions with many tool invocations, while still letting you expand a summary to see the full detail.
+
+### `--json` Output for Plugin Commands
+
+*(v1.0.85+)* `copilot plugin list`, `copilot plugin marketplace list`, and `copilot plugin marketplace browse` now accept a `--json` flag for machine-readable output, making it easier to script plugin discovery and inventory checks in CI or team tooling.
 
 ## Common Questions
 
