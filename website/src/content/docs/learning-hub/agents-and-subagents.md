@@ -3,7 +3,7 @@ title: 'Agents and Subagents'
 description: 'Learn how delegated subagents differ from primary agents, when to use them, and how to launch them in VS Code and Copilot CLI.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-12
+lastUpdated: 2026-09-21
 estimatedReadingTime: '9 minutes'
 tags:
   - agents
@@ -152,6 +152,8 @@ Or you can still enable experimental features and select it from the agent picke
 ```
 
 The **complementary model strategy** lets you specify that the rubber-duck agent should automatically pick a model from a different family than your primary model (e.g., if you're on Claude, it selects a GPT model, and vice versa). This maximises the diversity of perspectives.
+
+**Broader availability** *(v1.0.87+)*: The rubber-duck agent is now enabled for every model family, not just GPT-powered sessions, and it also works with the models used in low-cost-tier sessions — so you can get a second-opinion critique regardless of which model or cost tier your primary session is running on.
 
 Because it runs as a sub-agent layer rather than replacing your primary model, you keep your current session model and context while the rubber-duck analysis runs in the background.
 
