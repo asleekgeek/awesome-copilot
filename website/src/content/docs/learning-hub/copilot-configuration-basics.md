@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-12
+lastUpdated: 2026-09-22
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -604,6 +604,8 @@ Unlike `/worktree` (which keeps the current conversation), `/new-worktree` is th
 ```
 /worktree new my-feature-branch
 ```
+
+**`worktreePathTemplate` setting** *(v1.0.87+)*: Controls where `/worktree`, `/move`, `/new`, and `--worktree` create new worktrees. Set a template such as `~/src/worktrees/{repo}/{branch}` in `/settings`, using the placeholders `{repoPath}`, `{repo}`, `{branch}`, and `{branchSlug}`. Leave it unset to keep the default layout — `<repo>.worktrees/`, with slashes in the branch name flattened to dashes.
 
 The `/every` command (also available as `/loop` since v1.0.64) schedules a recurring prompt to run automatically at a specified interval. The companion `/after` command runs a prompt once after a specified delay. Both are useful for self-paced automation — polling for results, periodically summarizing progress, or triggering other slash commands on a timer:
 

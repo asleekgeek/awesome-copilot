@@ -3,7 +3,7 @@ title: 'Getting Started with the GitHub Copilot app'
 description: 'Learn about the GitHub Copilot app, a desktop experience built for agent-native development. Understand its key features and who it''s for.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-09-12
+lastUpdated: 2026-09-22
 estimatedReadingTime: '8 minutes'
 tags:
   - copilot-app
@@ -90,7 +90,11 @@ For a hands-on guide to building canvases with `/create-canvas`, see [Working wi
 - See what's already **Installed**, with consistent icons and source labels across plugin, skill, MCP server, canvas, and connector types
 - Create, edit, or remove your own **personal skills** directly in the app, without hand-authoring a `SKILL.md` file
 
-This makes Customize a good starting point if you want to extend the app's capabilities but don't need the full `copilot plugin` CLI workflow described in [Installing and Using Plugins](../installing-and-using-plugins/).
+This makes Customize a good starting point if you want to extend the app's capabilities but don't need the full `copilot plugin` CLI workflow described in [Installing and Using Plugins](../installing-and-using-plugins/). *(v1.1.23+)* Customize also surfaces **Featured** canvases you can install with one click, such as a Sentry canvas for triaging live Sentry issues without leaving the app.
+
+### Running Sessions in a Local Sandbox
+
+*(v1.1.23+)* A new project setting and **`/sandbox`** command let you restrict the agent's shell commands to a local sandbox scoped to the session's workspace, limiting filesystem access outside that workspace. This mirrors the sandboxing model available in Copilot CLI (see [Copilot Configuration Basics](../copilot-configuration-basics/)) and gives you an extra safety boundary when running autonomous or less-trusted prompts in the desktop app.
 
 ### Agent Merge
 
@@ -126,6 +130,10 @@ Open app settings directly from the message composer with **`/settings`** *(v1.1
 *(v1.1.20+)* If two installed plugins each ship a custom agent with the same display name, the agent picker now distinguishes them by their owning plugin, so you can tell at a glance which agent you're selecting when names collide.
 
 > **Terminology note (v1.1.20+)**: The "Start from scratch" option in session creation menus and project pickers has been renamed to **"Chat"**.
+
+### Restarting a Chat or Side Chat
+
+*(v1.1.23+)* Use the **`/restart-session`** command to restart a chat or side chat conversation while preserving its history — useful when a session's context has drifted and you want a clean continuation without losing the transcript. Open side chats can also be closed directly from the session rail with a new **Close** action, without navigating to the panel tab strip.
 
 ## Who is the Copilot app for?
 
